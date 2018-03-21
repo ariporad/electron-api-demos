@@ -13,7 +13,17 @@ ipcMain.on('put-in-tray', (event) => {
     click: () => {
       event.sender.send('tray-removed')
     }
-  }])
+}, {
+	label: 'Test: This will be invisible',
+	visible: false,
+}, {
+	label: 'Test: This should be invisible, but isn\'t',
+	visible: false,
+	submenu: [
+		{ label: 'Foo' },
+		{ label: 'Bar' }
+	]
+}])
 
   appIcon.setToolTip('Electron Demo in the tray.')
   appIcon.setContextMenu(contextMenu)
